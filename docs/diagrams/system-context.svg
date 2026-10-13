@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1170" viewBox="0 0 1600 1170">
+  <title>Verapass system context</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1d2b26"/>
+    </pattern>
+    <marker id="tip" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#e8dcc0" stroke-width="1.6"/>
+    </marker>
+    <marker id="tipS" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#f0a23b" stroke-width="1.6"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8">
+      <circle cx="5" cy="5" r="3.2" fill="#e8dcc0"/>
+    </marker>
+    <marker id="dotS" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8">
+      <circle cx="5" cy="5" r="3.2" fill="#f0a23b"/>
+    </marker>
+    <style>
+      .m{font-family:Menlo,'DejaVu Sans Mono',Consolas,'Liberation Mono',monospace}
+      .eye{font-size:15px;letter-spacing:3px;fill:#c9a86a}
+      .ttl{font-size:32px;fill:#f3ead6}
+      .h{font-size:21px;fill:#f3ead6}
+      .b{font-size:16px;fill:#a7b6ab}
+      .lbl{font-size:15px;fill:#e8dcc0}
+      .lblS{font-size:15px;fill:#f0a23b}
+      .chip{font-size:12px;letter-spacing:2px}
+      .card{fill:#13201c;stroke:#cdbf9c;stroke-width:1.4}
+      .cardOn{fill:#11231d;stroke:#5fd3a5;stroke-width:1.4}
+      .cardPlan{fill:#13201c;stroke:#f0a23b;stroke-width:1.4;stroke-dasharray:7 5}
+      .tab{fill:#cdbf9c}
+      .tabOn{fill:#5fd3a5}
+      .tabPlan{fill:#f0a23b}
+      .tabt{font-size:15px;fill:#0e1714}
+      .ln{fill:none;stroke:#e8dcc0;stroke-width:1.6}
+      .lnS{fill:none;stroke:#f0a23b;stroke-width:1.6;stroke-dasharray:8 6}
+      .pad{fill:#0e1714}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1170" fill="#0e1714"/>
+  <rect width="1600" height="1170" fill="url(#dots)"/>
+
+  <!-- heading -->
+  <text class="m eye" x="60" y="62">VERAPASS  /  SYSTEM CONTEXT</text>
+  <text class="m ttl" x="60" y="108">Who touches the stamp contract</text>
+
+  <!-- connectors (drawn first, cards sit on top) -->
+  <!-- Stripe webhook to API -->
+  <line class="ln" x1="1120" y1="236" x2="482" y2="236" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <rect class="pad" x="560" y="210" width="480" height="22"/>
+  <text class="m lbl" x="800" y="226" text-anchor="middle">webhook, signed: paid  (refund, dispute: T1)</text>
+  <!-- API to attestor -->
+  <line class="ln" x1="480" y1="352" x2="588" y2="352" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <text class="m lbl" x="534" y="340" text-anchor="middle">receipt</text>
+  <!-- attestor to contract -->
+  <line class="ln" x1="800" y1="404" x2="800" y2="448" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <!-- traveller to API -->
+  <line class="ln" x1="250" y1="468" x2="250" y2="422" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <text class="m lbl" x="264" y="451">check-in fix + nonce</text>
+  <!-- traveller co-sign -->
+  <line class="lnS" x1="440" y1="572" x2="648" y2="596" marker-start="url(#dotS)" marker-end="url(#tipS)"/>
+  <text class="m lblS" x="545" y="560" text-anchor="middle">co-signs stamp (T1)</text>
+  <!-- admin -->
+  <line class="ln" x1="1160" y1="475" x2="944" y2="550" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <rect class="pad" x="985" y="488" width="146" height="22"/>
+  <text class="m lbl" x="1058" y="504" text-anchor="middle">registry writes</text>
+  <!-- creator -->
+  <line class="lnS" x1="1160" y1="702" x2="947" y2="642" marker-start="url(#dotS)" marker-end="url(#tipS)"/>
+  <rect class="pad" x="958" y="676" width="184" height="42"/>
+  <text class="m lblS" x="1050" y="692" text-anchor="middle">request entry (T1)</text>
+  <text class="m lblS" x="1050" y="712" text-anchor="middle">claim credit (T2)</text>
+  <!-- readers -->
+  <line class="ln" x1="918" y1="695" x2="1138" y2="868" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <rect class="pad" x="1010" y="770" width="104" height="22"/>
+  <text class="m lbl" x="1062" y="786" text-anchor="middle">reads</text>
+  <!-- channels -->
+  <line class="lnS" x1="800" y1="878" x2="800" y2="752" marker-start="url(#dotS)" marker-end="url(#tipS)"/>
+  <text class="m lblS" x="814" y="820">fees (T2)</text>
+  <!-- attest.so mirror -->
+  <line class="lnS" x1="653" y1="640" x2="432" y2="878" marker-start="url(#dotS)" marker-end="url(#tipS)"/>
+  <rect class="pad" x="470" y="760" width="130" height="22"/>
+  <text class="m lblS" x="535" y="776" text-anchor="middle">mirror (T2)</text>
+
+  <!-- central stamp: the Soroban contract -->
+  <circle cx="800" cy="600" r="150" fill="#0f241d" stroke="#5fd3a5" stroke-width="1.4" stroke-dasharray="3 5"/>
+  <circle cx="800" cy="600" r="132" fill="none" stroke="#5fd3a5" stroke-width="2"/>
+  <circle cx="800" cy="600" r="124" fill="none" stroke="#5fd3a5" stroke-width="0.8"/>
+  <text class="m chip" x="800" y="526" text-anchor="middle" fill="#5fd3a5">ON STELLAR</text>
+  <text class="m h" x="800" y="572" text-anchor="middle">verapass_stamps</text>
+  <text class="m b" x="800" y="600" text-anchor="middle">Soroban contract</text>
+  <text class="m b" x="800" y="626" text-anchor="middle">registry, passports,</text>
+  <text class="m b" x="800" y="650" text-anchor="middle">stamps, events</text>
+  <text class="m chip" x="800" y="686" text-anchor="middle" fill="#5fd3a5">TESTNET  v1</text>
+
+  <!-- USDC satellite -->
+  <circle cx="702" cy="769" r="44" fill="#0f241d" stroke="#f0a23b" stroke-width="1.4" stroke-dasharray="6 4"/>
+  <text class="m lbl" x="702" y="766" text-anchor="middle">USDC</text>
+  <text class="m chip" x="702" y="786" text-anchor="middle" fill="#f0a23b">SAC  T2</text>
+
+  <!-- API -->
+  <rect class="card" x="60" y="170" width="420" height="250"/>
+  <rect class="tab" x="60" y="170" width="30" height="30"/><text class="m tabt" x="75" y="191" text-anchor="middle">A</text>
+  <text class="m chip" x="466" y="190" text-anchor="end" fill="#cdbf9c">OFF-CHAIN</text>
+  <text class="m h" x="106" y="194">Presence-check API</text>
+  <text class="m b" x="84" y="236">Hono server</text>
+  <text class="m b" x="84" y="263">nonce: 2 min, single use</text>
+  <text class="m b" x="84" y="290">geofence, accuracy &lt;= 100 m</text>
+  <text class="m b" x="84" y="317">speed &lt;= 250 km/h</text>
+  <text class="m b" x="84" y="344">per-place, per-IP limits</text>
+  <text class="m b" x="84" y="371">Ed25519-signed receipt</text>
+  <text class="m b" x="84" y="398">Postgres store: T1</text>
+
+  <!-- attestor -->
+  <rect class="card" x="590" y="300" width="420" height="104"/>
+  <rect class="tab" x="590" y="300" width="30" height="30"/><text class="m tabt" x="605" y="321" text-anchor="middle">B</text>
+  <text class="m chip" x="996" y="320" text-anchor="end" fill="#cdbf9c">SERVER KEY</text>
+  <text class="m h" x="636" y="324">Attestor</text>
+  <text class="m b" x="614" y="360">signs stamp, activate_passport</text>
+  <text class="m b" x="614" y="386">not the admin; KMS from T1</text>
+
+  <!-- Stripe -->
+  <rect class="card" x="1120" y="170" width="420" height="130"/>
+  <rect class="tab" x="1120" y="170" width="30" height="30"/><text class="m tabt" x="1135" y="191" text-anchor="middle">C</text>
+  <text class="m chip" x="1526" y="190" text-anchor="end" fill="#cdbf9c">OFF-CHAIN</text>
+  <text class="m h" x="1166" y="194">Stripe Checkout</text>
+  <text class="m b" x="1144" y="236">card payment, test mode</text>
+  <text class="m b" x="1144" y="263">never writes to Stellar</text>
+
+  <!-- admin -->
+  <rect class="card" x="1160" y="400" width="380" height="150"/>
+  <rect class="tab" x="1160" y="400" width="30" height="30"/><text class="m tabt" x="1175" y="421" text-anchor="middle">D</text>
+  <text class="m h" x="1206" y="424">Admin key</text>
+  <text class="m b" x="1184" y="464">add_creator, add_place,</text>
+  <text class="m b" x="1184" y="491">revoke_creator, upgrade</text>
+  <text class="m b" x="1184" y="518">mainnet: 2-of-3 multisig (T3)</text>
+
+  <!-- creator -->
+  <rect class="card" x="1160" y="620" width="380" height="170"/>
+  <rect class="tab" x="1160" y="620" width="30" height="30"/><text class="m tabt" x="1175" y="641" text-anchor="middle">E</text>
+  <text class="m h" x="1206" y="644">Licensed creator</text>
+  <text class="m b" x="1184" y="684">vouches for places;</text>
+  <text class="m b" x="1184" y="711">first: a TAT-licensed</text>
+  <text class="m b" x="1184" y="738">guide in Phuket</text>
+  <text class="m b" x="1184" y="765">G or C account</text>
+
+  <!-- traveller -->
+  <rect class="card" x="60" y="470" width="380" height="200"/>
+  <rect class="tab" x="60" y="470" width="30" height="30"/><text class="m tabt" x="75" y="491" text-anchor="middle">F</text>
+  <text class="m chip" x="426" y="490" text-anchor="end" fill="#cdbf9c">PHONE</text>
+  <text class="m h" x="106" y="494">Traveller</text>
+  <text class="m b" x="84" y="534">web app, browser GPS</text>
+  <text class="m b" x="84" y="561">pays by card</text>
+  <text class="m b" x="84" y="588">today: server-derived</text>
+  <text class="m b" x="84" y="615">address; Freighter: T1</text>
+  <text class="m b" x="84" y="642">passkey wallet: T2</text>
+
+  <!-- attest.so -->
+  <rect class="cardPlan" x="60" y="880" width="380" height="150"/>
+  <rect class="tabPlan" x="60" y="880" width="30" height="30"/><text class="m tabt" x="75" y="901" text-anchor="middle">G</text>
+  <text class="m chip" x="426" y="900" text-anchor="end" fill="#f0a23b">ON STELLAR</text>
+  <text class="m h" x="106" y="904">attest.so</text>
+  <text class="m b" x="84" y="944">each stamp mirrored as</text>
+  <text class="m b" x="84" y="971">an attestation (T2);</text>
+  <text class="m b" x="84" y="998">one mirrored by hand today</text>
+
+  <!-- channels -->
+  <rect class="cardPlan" x="620" y="880" width="360" height="150"/>
+  <rect class="tabPlan" x="620" y="880" width="30" height="30"/><text class="m tabt" x="635" y="901" text-anchor="middle">H</text>
+  <text class="m h" x="666" y="904">Fee relay</text>
+  <text class="m b" x="644" y="944">OZ Stellar Channels</text>
+  <text class="m b" x="644" y="971">for passkey txs (T2)</text>
+  <text class="m b" x="644" y="998">fallback: attestor pays</text>
+
+  <!-- readers -->
+  <rect class="card" x="1100" y="870" width="440" height="160"/>
+  <rect class="tab" x="1100" y="870" width="30" height="30"/><text class="m tabt" x="1115" y="891" text-anchor="middle">I</text>
+  <text class="m chip" x="1526" y="890" text-anchor="end" fill="#cdbf9c">PUBLIC</text>
+  <text class="m h" x="1146" y="894">Anyone</text>
+  <text class="m b" x="1124" y="934">has_stamp, get_stamp,</text>
+  <text class="m b" x="1124" y="961">place_visit_count via RPC</text>
+  <text class="m b" x="1124" y="988">stellar.expert, Stellar Lab</text>
+  <text class="m b" x="1124" y="1015">indexer + read API: T3</text>
+
+  <!-- legend and honest scope -->
+  <line x1="60" y1="1068" x2="1540" y2="1068" stroke="#24342e" stroke-width="1"/>
+  <line class="ln" x1="60" y1="1098" x2="120" y2="1098"/>
+  <text class="m b" x="132" y="1104">live on testnet today</text>
+  <line class="lnS" x1="380" y1="1098" x2="440" y2="1098"/>
+  <text class="m b" x="452" y="1104">planned, tranche in brackets</text>
+  <circle cx="770" cy="1098" r="9" fill="none" stroke="#5fd3a5" stroke-width="1.6"/>
+  <text class="m b" x="790" y="1104">Stellar network</text>
+  <text class="m b" x="60" y="1146">The location check runs off-chain. A stamp records that the attestor accepted a check-in under these rules; it does not prove a person stood there.</text>
+</svg>

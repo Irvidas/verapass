@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1230" viewBox="0 0 1700 1230">
+  <title>Verapass on-chain data model</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1d2b26"/>
+    </pattern>
+    <marker id="tip" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#e8dcc0" stroke-width="1.6"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8">
+      <circle cx="5" cy="5" r="3.2" fill="#e8dcc0"/>
+    </marker>
+    <style>
+      .m{font-family:Menlo,'DejaVu Sans Mono',Consolas,'Liberation Mono',monospace}
+      .eye{font-size:15px;letter-spacing:3px;fill:#c9a86a}
+      .eyeS{font-size:15px;letter-spacing:3px;fill:#f0a23b}
+      .ttl{font-size:32px;fill:#f3ead6}
+      .key{font-size:20px;fill:#5fd3a5}
+      .val{font-size:16px;fill:#e8dcc0}
+      .f{font-size:16px;fill:#e8dcc0}
+      .ty{font-size:16px;fill:#8fa59a}
+      .b{font-size:16px;fill:#a7b6ab}
+      .lbl{font-size:15px;fill:#e8dcc0}
+      .s{font-size:16px;fill:#f0a23b}
+      .card{fill:#11231d;stroke:#5fd3a5;stroke-width:1.4}
+      .band{fill:#0f1f1a;stroke:#2f6e57;stroke-width:1.2}
+      .plan{fill:#13201c;stroke:#f0a23b;stroke-width:1.4;stroke-dasharray:7 5}
+      .ev{fill:#13201c;stroke:#cdbf9c;stroke-width:1.4}
+      .rule{stroke:#2a4a3e;stroke-width:1}
+      .ln{fill:none;stroke:#e8dcc0;stroke-width:1.6}
+      .lnD{fill:none;stroke:#8fa59a;stroke-width:1.4;stroke-dasharray:4 5}
+      .pad{fill:#0e1714}
+    </style>
+  </defs>
+
+  <rect width="1700" height="1230" fill="#0e1714"/>
+  <rect width="1700" height="1230" fill="url(#dots)"/>
+
+  <text class="m eye" x="40" y="62">VERAPASS  /  ON-CHAIN DATA MODEL  /  CONTRACT v1 ON TESTNET</text>
+  <text class="m ttl" x="40" y="108">What the contract stores, and why it is small</text>
+
+  <!-- instance -->
+  <rect class="band" x="40" y="148" width="1620" height="124"/>
+  <text class="m eye" x="64" y="182">INSTANCE STORAGE</text>
+  <text class="m b" x="380" y="182">admin or attestor call: TTL back to 30 days if under 7; keep-alive: T1</text>
+  <line class="rule" x1="64" y1="204" x2="1636" y2="204"/>
+  <text class="m f" x="64" y="242">Admin</text><text class="m ty" x="390" y="242" text-anchor="end">Address</text>
+  <text class="m f" x="460" y="242">PendingAdmin</text><text class="m ty" x="790" y="242" text-anchor="end">Address</text>
+  <text class="m f" x="860" y="242">Attestor</text><text class="m ty" x="1190" y="242" text-anchor="end">Address</text>
+  <text class="m f" x="1260" y="242">NextTokenId</text><text class="m ty" x="1636" y="242" text-anchor="end">u32</text>
+
+  <text class="m eye" x="40" y="322">PERSISTENT STORAGE</text>
+  <text class="m b" x="356" y="322">each write: TTL back to 120 days if under 30 (mainnet minimum: 120 days)</text>
+
+  <!-- relations (under cards) -->
+  <line class="ln" x1="610" y1="470" x2="522" y2="470" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <text class="m lbl" x="566" y="458" text-anchor="middle">creator</text>
+  <line class="ln" x1="850" y1="650" x2="850" y2="562" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <text class="m lbl" x="864" y="612">place_id</text>
+  <line class="ln" x1="1090" y1="664" x2="1180" y2="562" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <rect class="pad" x="1186" y="590" width="300" height="24"/>
+  <text class="m lbl" x="1196" y="608">traveller needs a passport</text>
+  <line class="ln" x1="1090" y1="760" x2="1178" y2="760" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <text class="m lbl" x="1135" y="748" text-anchor="middle">token_id</text>
+  <line class="lnD" x1="522" y1="760" x2="608" y2="760"/>
+  <text class="m lbl" x="566" y="748" text-anchor="middle">index</text>
+
+  <!-- Creator -->
+  <rect class="card" x="40" y="350" width="480" height="212"/>
+  <text class="m key" x="64" y="386">Creator(address)</text>
+  <text class="m b" x="64" y="412">-&gt; CreatorRecord</text>
+  <line class="rule" x1="64" y1="428" x2="496" y2="428"/>
+  <text class="m f" x="64" y="458">licence_hash</text><text class="m ty" x="496" y="458" text-anchor="end">BytesN&lt;32&gt;</text>
+  <text class="m f" x="64" y="484">active</text><text class="m ty" x="496" y="484" text-anchor="end">bool</text>
+  <text class="m f" x="64" y="510">added_at</text><text class="m ty" x="496" y="510" text-anchor="end">u64</text>
+  <text class="m b" x="64" y="542">hash of the licence check</text>
+
+  <!-- Place -->
+  <rect class="card" x="610" y="350" width="480" height="212"/>
+  <text class="m key" x="634" y="386">Place(place_id)</text>
+  <text class="m b" x="634" y="412">-&gt; PlaceRecord</text>
+  <line class="rule" x1="634" y1="428" x2="1066" y2="428"/>
+  <text class="m f" x="634" y="458">creator</text><text class="m ty" x="1066" y="458" text-anchor="end">Address</text>
+  <text class="m f" x="634" y="484">geo_commitment</text><text class="m ty" x="1066" y="484" text-anchor="end">BytesN&lt;32&gt;</text>
+  <text class="m f" x="634" y="510">visits</text><text class="m ty" x="1066" y="510" text-anchor="end">u32</text>
+  <text class="m f" x="634" y="536">added_at</text><text class="m ty" x="1066" y="536" text-anchor="end">u64</text>
+
+  <!-- Passport -->
+  <rect class="card" x="1180" y="350" width="480" height="212"/>
+  <text class="m key" x="1204" y="386">Passport(traveller)</text>
+  <text class="m b" x="1204" y="412">-&gt; payment_ref</text>
+  <line class="rule" x1="1204" y1="428" x2="1636" y2="428"/>
+  <text class="m f" x="1204" y="458">payment_ref</text><text class="m ty" x="1636" y="458" text-anchor="end">BytesN&lt;32&gt;</text>
+  <text class="m b" x="1204" y="490">sha256 of the Checkout</text>
+  <text class="m b" x="1204" y="514">Session id (or free-pass ref);</text>
+  <text class="m b" x="1204" y="538">same ref: no-op, else #9</text>
+
+  <!-- StampsOf -->
+  <rect class="card" x="40" y="650" width="480" height="230"/>
+  <text class="m key" x="64" y="686">StampsOf(traveller)</text>
+  <text class="m b" x="64" y="712">-&gt; Vec&lt;place_id&gt;</text>
+  <line class="rule" x1="64" y1="728" x2="496" y2="728"/>
+  <text class="m b" x="64" y="760">place ids stamped by</text>
+  <text class="m b" x="64" y="784">one wallet</text>
+  <text class="m s" x="64" y="826">T1: keep this or Token,</text>
+  <text class="m s" x="64" y="850">derive the other from events</text>
+
+  <!-- Stamp -->
+  <rect class="card" x="610" y="650" width="480" height="230"/>
+  <text class="m key" x="634" y="686">Stamp(traveller, place_id)</text>
+  <text class="m b" x="634" y="712">-&gt; StampRecord</text>
+  <line class="rule" x1="634" y1="728" x2="1066" y2="728"/>
+  <text class="m f" x="634" y="758">token_id</text><text class="m ty" x="1066" y="758" text-anchor="end">u32</text>
+  <text class="m f" x="634" y="784">receipt_hash</text><text class="m ty" x="1066" y="784" text-anchor="end">BytesN&lt;32&gt;</text>
+  <text class="m f" x="634" y="810">checked_in_at</text><text class="m ty" x="1066" y="810" text-anchor="end">u64</text>
+  <text class="m f" x="634" y="836">stamped_at</text><text class="m ty" x="1066" y="836" text-anchor="end">u64</text>
+  <text class="m b" x="634" y="864">key exists = #10 on repeat</text>
+
+  <!-- Token -->
+  <rect class="card" x="1180" y="650" width="480" height="230"/>
+  <text class="m key" x="1204" y="686">Token(token_id)</text>
+  <text class="m b" x="1204" y="712">-&gt; TokenRecord</text>
+  <line class="rule" x1="1204" y1="728" x2="1636" y2="728"/>
+  <text class="m f" x="1204" y="758">owner</text><text class="m ty" x="1636" y="758" text-anchor="end">Address</text>
+  <text class="m f" x="1204" y="784">place_id</text><text class="m ty" x="1636" y="784" text-anchor="end">String</text>
+  <text class="m b" x="1204" y="822">balance, owner_of read it;</text>
+  <text class="m b" x="1204" y="846">transfer, approve: #12</text>
+
+  <!-- events -->
+  <rect class="ev" x="40" y="930" width="1000" height="200"/>
+  <text class="m eye" x="64" y="966">EVENTS</text>
+  <text class="m b" x="200" y="966">RPC keeps 7 days; the indexer ingests continuously (T3)</text>
+  <line class="rule" x1="64" y1="984" x2="1016" y2="984"/>
+  <text class="m val" x="64" y="1018">creator_added</text>
+  <text class="m val" x="300" y="1018">creator_revoked</text>
+  <text class="m val" x="560" y="1018">place_added</text>
+  <text class="m val" x="780" y="1018">upgraded</text>
+  <text class="m key" x="64" y="1050" style="font-size:16px">stamped</text>
+  <text class="m b" x="160" y="1050">(topics: traveller, place_id)</text>
+  <text class="m val" x="560" y="1050">passport_activated</text>
+  <text class="m val" x="64" y="1082">attestor_changed</text>
+  <text class="m val" x="300" y="1082">admin_proposed</text>
+  <text class="m val" x="560" y="1082">admin_changed</text>
+  <text class="m b" x="64" y="1112">Per-place counts and wallet histories rebuild from these alone.</text>
+
+  <!-- planned -->
+  <rect class="plan" x="1100" y="930" width="560" height="200"/>
+  <text class="m eyeS" x="1124" y="966">CONTRACT v2, T1 UNLESS NOTED</text>
+  <line class="rule" x1="1124" y1="984" x2="1636" y2="984"/>
+  <text class="m val" x="1124" y="1016">stamp() adds checkin_nonce and</text>
+  <text class="m val" x="1124" y="1040">traveller.require_auth()</text>
+  <text class="m val" x="1124" y="1064">deactivate_passport, move_place</text>
+  <text class="m val" x="1124" y="1088">two-step registry; daily caps</text>
+  <text class="m s" x="1124" y="1112">creator USDC credit + claim: T2</text>
+
+  <text class="m b" x="40" y="1180">Not on-chain: coordinates (only geo_commitment = salted sha256 of id, lat, lng, radius), place details, card data</text>
+  <text class="m b" x="40" y="1204">(only a hash of the session id) and the server's traveller id (today the chain sees an HMAC-derived address).</text>
+</svg>

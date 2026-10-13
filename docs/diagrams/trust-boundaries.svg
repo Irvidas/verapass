@@ -1,0 +1,182 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1330" viewBox="0 0 1600 1330">
+  <title>Verapass data flow and trust boundaries</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1d2b26"/>
+    </pattern>
+    <marker id="tip" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#e8dcc0" stroke-width="1.6"/>
+    </marker>
+    <marker id="tipS" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#f0a23b" stroke-width="1.6"/>
+    </marker>
+    <style>
+      .m{font-family:Menlo,'DejaVu Sans Mono',Consolas,'Liberation Mono',monospace}
+      .eye{font-size:15px;letter-spacing:3px;fill:#c9a86a}
+      .ttl{font-size:32px;fill:#f3ead6}
+      .h{font-size:21px;fill:#f3ead6}
+      .b{font-size:16px;fill:#a7b6ab}
+      .bS{font-size:16px;fill:#f0a23b}
+      .lbl{font-size:15px;fill:#e8dcc0}
+      .zone{font-size:13px;letter-spacing:2px;fill:#c9a86a}
+      .num{font-size:15px;fill:#e8dcc0}
+      .numS{font-size:15px;fill:#f0a23b}
+      .bound{fill:none;stroke:#c9a86a;stroke-width:1.4;stroke-dasharray:10 6}
+      .card{fill:#13201c;stroke:#cdbf9c;stroke-width:1.4}
+      .cardOn{fill:#11231d;stroke:#5fd3a5;stroke-width:1.4}
+      .cardPlan{fill:#13201c;stroke:#f0a23b;stroke-width:1.4;stroke-dasharray:7 5}
+      .ln{fill:none;stroke:#e8dcc0;stroke-width:1.6}
+      .lnS{fill:none;stroke:#f0a23b;stroke-width:1.6;stroke-dasharray:8 6}
+      .badge{fill:#0e1714;stroke:#e8dcc0;stroke-width:1.4}
+      .badgeS{fill:#0e1714;stroke:#f0a23b;stroke-width:1.4}
+    </style>
+  </defs>
+
+  <rect width="1600" height="1330" fill="#0e1714"/>
+  <rect width="1600" height="1330" fill="url(#dots)"/>
+
+  <!-- heading -->
+  <text class="m eye" x="60" y="62">VERAPASS  /  DATA FLOW AND TRUST BOUNDARIES</text>
+  <text class="m ttl" x="60" y="108">Where data crosses a trust boundary</text>
+  <text class="m b" x="60" y="142">Dashed gold frames are trust boundaries. Each numbered arrow crosses one; the key below lists what it carries.</text>
+
+  <!-- trust boundaries -->
+  <rect class="bound" x="40" y="170" width="400" height="430"/>
+  <text class="m zone" x="60" y="198">PHONE  /  UNTRUSTED</text>
+  <rect class="bound" x="520" y="170" width="560" height="430"/>
+  <text class="m zone" x="540" y="198">VERAPASS SERVER  /  OPERATOR</text>
+  <rect class="bound" x="1160" y="170" width="400" height="200"/>
+  <text class="m zone" x="1180" y="198">STRIPE  /  EXTERNAL</text>
+  <rect class="bound" x="1160" y="400" width="400" height="200"/>
+  <text class="m zone" x="1180" y="428">ADMIN MACHINE  /  OPERATOR</text>
+  <rect class="bound" x="40" y="680" width="1520" height="300"/>
+  <text class="m zone" x="1540" y="708" text-anchor="end">STELLAR TESTNET  /  PUBLIC, RULES ENFORCED BY THE CONTRACT</text>
+
+  <!-- connectors (drawn first, cards sit on top) -->
+  <!-- 1 phone to API -->
+  <line class="ln" x1="410" y1="290" x2="548" y2="290" marker-end="url(#tip)"/>
+  <!-- 2 API to phone -->
+  <line class="ln" x1="550" y1="350" x2="412" y2="350" marker-end="url(#tip)"/>
+  <!-- 3 Stripe to API -->
+  <line class="ln" x1="1190" y1="275" x2="1052" y2="275" marker-end="url(#tip)"/>
+  <!-- 4 API to Stripe -->
+  <line class="ln" x1="1050" y1="330" x2="1188" y2="330" marker-end="url(#tip)"/>
+  <!-- 5 attestor key to RPC -->
+  <line class="ln" x1="830" y1="575" x2="652" y2="738" marker-end="url(#tip)"/>
+  <!-- 6 admin to RPC -->
+  <polyline class="ln" points="1360,575 1360,660 770,660 770,738" marker-end="url(#tip)"/>
+  <!-- RPC to contract -->
+  <line class="ln" x1="790" y1="840" x2="828" y2="840" marker-end="url(#tip)"/>
+  <!-- 7 contract to readers -->
+  <line class="ln" x1="1190" y1="840" x2="1228" y2="840" marker-end="url(#tip)"/>
+  <!-- 8 planned: phone to traveller wallet to RPC -->
+  <line class="lnS" x1="240" y1="575" x2="240" y2="758" marker-end="url(#tipS)"/>
+  <line class="lnS" x1="430" y1="850" x2="548" y2="850" marker-end="url(#tipS)"/>
+
+  <!-- phone -->
+  <rect class="card" x="70" y="225" width="340" height="350"/>
+  <text class="m h" x="94" y="262">Web app in the browser</text>
+  <text class="m b" x="94" y="300">GPS fix and accuracy:</text>
+  <text class="m b" x="94" y="324">  reported by the client</text>
+  <text class="m b" x="94" y="356">traveller id: bearer</text>
+  <text class="m b" x="94" y="380">  credential for the pass</text>
+  <text class="m b" x="94" y="412">passport in localStorage:</text>
+  <text class="m b" x="94" y="436">  receipts, preimages,</text>
+  <text class="m b" x="94" y="460">  signed Stellar records</text>
+  <text class="m b" x="94" y="492">/verify checks a stamp</text>
+  <text class="m b" x="94" y="516">  in the browser against</text>
+  <text class="m b" x="94" y="540">  the key at /api/health</text>
+
+  <!-- API -->
+  <rect class="card" x="550" y="225" width="500" height="160"/>
+  <text class="m h" x="574" y="262">Presence-check API (Hono)</text>
+  <text class="m b" x="574" y="298">checks nonce, clock skew, geofence,</text>
+  <text class="m b" x="574" y="322">accuracy, speed, per-place and per-IP</text>
+  <text class="m b" x="574" y="346">limits; signs receipts (Ed25519);</text>
+  <text class="m b" x="574" y="370">queues attestations</text>
+
+  <!-- state store -->
+  <rect class="card" x="550" y="405" width="240" height="170"/>
+  <text class="m h" x="572" y="440">State store</text>
+  <text class="m b" x="572" y="472">memory, or Redis</text>
+  <text class="m b" x="572" y="496">REST when configured</text>
+  <text class="m b" x="572" y="520">nonces, passes, last</text>
+  <text class="m b" x="572" y="544">fixes, limits, status</text>
+
+  <!-- secrets -->
+  <rect class="card" x="810" y="405" width="240" height="170"/>
+  <text class="m h" x="832" y="440">Secrets (env)</text>
+  <text class="m b" x="832" y="472">receipt signing key</text>
+  <text class="m b" x="832" y="496">TRAVELLER_SECRET</text>
+  <text class="m b" x="832" y="520">attestor key, Stripe</text>
+  <text class="m bS" x="832" y="544">KMS keys: T1</text>
+
+  <!-- Stripe -->
+  <rect class="card" x="1190" y="225" width="340" height="120"/>
+  <text class="m h" x="1214" y="262">Stripe Checkout</text>
+  <text class="m b" x="1214" y="296">card data stays here</text>
+  <text class="m b" x="1214" y="322">test mode only</text>
+
+  <!-- admin -->
+  <rect class="card" x="1190" y="455" width="340" height="120"/>
+  <text class="m h" x="1214" y="492">Admin key (CLI)</text>
+  <text class="m b" x="1214" y="526">separate from the attestor</text>
+  <text class="m bS" x="1214" y="552">2-of-3 multisig: T3</text>
+
+  <!-- planned traveller wallet -->
+  <rect class="cardPlan" x="70" y="760" width="360" height="180"/>
+  <text class="m h" x="94" y="796">Traveller wallet</text>
+  <text class="m bS" x="94" y="830">Freighter: T1</text>
+  <text class="m bS" x="94" y="856">passkey: T2</text>
+  <text class="m b" x="94" y="890">today the server derives</text>
+  <text class="m b" x="94" y="914">the address by HMAC</text>
+
+  <!-- RPC -->
+  <rect class="card" x="550" y="740" width="240" height="200"/>
+  <text class="m h" x="572" y="776">Soroban RPC</text>
+  <text class="m b" x="572" y="810">simulate, send,</text>
+  <text class="m b" x="572" y="834">getTransaction,</text>
+  <text class="m b" x="572" y="858">getEvents (about</text>
+  <text class="m b" x="572" y="882">7 days kept)</text>
+
+  <!-- contract -->
+  <rect class="cardOn" x="830" y="740" width="360" height="200"/>
+  <text class="m h" x="854" y="776">verapass_stamps</text>
+  <text class="m b" x="854" y="810">only the attestor mints</text>
+  <text class="m b" x="854" y="834">one stamp per traveller</text>
+  <text class="m b" x="854" y="858">  per place (#10)</text>
+  <text class="m b" x="854" y="882">active passport first (#8)</text>
+  <text class="m b" x="854" y="906">no transfers (#12)</text>
+  <text class="m b" x="854" y="930">hashes and ids only</text>
+
+  <!-- readers -->
+  <rect class="card" x="1230" y="740" width="300" height="200"/>
+  <text class="m h" x="1254" y="776">Anyone</text>
+  <text class="m b" x="1254" y="810">stellar.expert,</text>
+  <text class="m b" x="1254" y="834">Stellar Lab, RPC</text>
+  <text class="m b" x="1254" y="858">reads and events;</text>
+  <text class="m b" x="1254" y="882">no Verapass account</text>
+  <text class="m b" x="1254" y="906">or database needed</text>
+
+  <!-- number badges on the arrows -->
+  <circle class="badge" cx="480" cy="290" r="14"/><text class="m num" x="480" y="295" text-anchor="middle">1</text>
+  <circle class="badge" cx="480" cy="350" r="14"/><text class="m num" x="480" y="355" text-anchor="middle">2</text>
+  <circle class="badge" cx="1120" cy="275" r="14"/><text class="m num" x="1120" y="280" text-anchor="middle">3</text>
+  <circle class="badge" cx="1120" cy="330" r="14"/><text class="m num" x="1120" y="335" text-anchor="middle">4</text>
+  <circle class="badge" cx="767" cy="632" r="14"/><text class="m num" x="767" y="637" text-anchor="middle">5</text>
+  <circle class="badge" cx="1360" cy="618" r="14"/><text class="m num" x="1360" y="623" text-anchor="middle">6</text>
+  <circle class="badge" cx="1210" cy="810" r="14"/><text class="m num" x="1210" y="815" text-anchor="middle">7</text>
+  <circle class="badgeS" cx="240" cy="660" r="14"/><text class="m numS" x="240" y="665" text-anchor="middle">8</text>
+
+  <!-- key -->
+  <text class="m zone" x="60" y="1022">WHAT EACH ARROW CARRIES</text>
+  <text class="m b" x="60" y="1056">1  traveller id, place id, lat, lng, accuracy, device time, nonce: untrusted input, checked by the API</text>
+  <text class="m b" x="60" y="1082">2  nonce; Ed25519-signed receipt and proof preimage; signed Stellar record (tx hash, token id)</text>
+  <text class="m b" x="60" y="1108">3  checkout.session.completed webhook: trusted only with a valid signature over the raw body</text>
+  <text class="m b" x="60" y="1134">4  Checkout Session create, and a lookup when the webhook is late (Stripe secret key)</text>
+  <text class="m b" x="60" y="1160">5  stamp, activate_passport signed by the attestor: derived address, place id, receipt hash, ts, payment_ref</text>
+  <text class="m b" x="60" y="1186">6  add_creator, add_place (geo_commitment), set_attestor, upgrade: signed by the admin key, sent through RPC</text>
+  <text class="m b" x="60" y="1212">7  contract reads and events, open to anyone</text>
+  <text class="m bS" x="60" y="1238">8  T1: the traveller's wallet co-signs the stamp, and the app reads stamps from the chain</text>
+  <text class="m lbl" x="60" y="1286">On chain: addresses, place ids, hashes, times, counts. Never on chain: coordinates, card data, the traveller id, personal data.</text>
+</svg>

@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1190" viewBox="0 0 1800 1190">
+  <title>Verapass check-in and stamp sequence</title>
+  <defs>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1" fill="#1d2b26"/>
+    </pattern>
+    <marker id="tip" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#e8dcc0" stroke-width="1.6"/>
+    </marker>
+    <marker id="tipS" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+      <path d="M2,2 L10,6 L2,10" fill="none" stroke="#f0a23b" stroke-width="1.6"/>
+    </marker>
+    <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8">
+      <circle cx="5" cy="5" r="3.2" fill="#e8dcc0"/>
+    </marker>
+    <marker id="dotS" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="8" markerHeight="8">
+      <circle cx="5" cy="5" r="3.2" fill="#f0a23b"/>
+    </marker>
+    <style>
+      .m{font-family:Menlo,'DejaVu Sans Mono',Consolas,'Liberation Mono',monospace}
+      .eye{font-size:15px;letter-spacing:3px;fill:#c9a86a}
+      .ttl{font-size:32px;fill:#f3ead6}
+      .h{font-size:19px;fill:#f3ead6}
+      .b{font-size:16px;fill:#a7b6ab}
+      .lbl{font-size:16px;fill:#e8dcc0}
+      .lblS{font-size:16px;fill:#f0a23b}
+      .num{font-size:15px;fill:#0e1714}
+      .chip{font-size:12px;letter-spacing:2px}
+      .lane{stroke:#2e423a;stroke-width:1.2}
+      .laneOn{stroke:#2f6e57;stroke-width:1.2}
+      .card{fill:#13201c;stroke:#cdbf9c;stroke-width:1.4}
+      .cardOn{fill:#11231d;stroke:#5fd3a5;stroke-width:1.4}
+      .ln{fill:none;stroke:#e8dcc0;stroke-width:1.6}
+      .lnS{fill:none;stroke:#f0a23b;stroke-width:1.6;stroke-dasharray:8 6}
+      .ph{stroke:#c9a86a;stroke-width:1.2;fill:none}
+    </style>
+  </defs>
+
+  <rect width="1800" height="1190" fill="#0e1714"/>
+  <rect width="1800" height="1190" fill="url(#dots)"/>
+
+  <text class="m eye" x="40" y="62">VERAPASS  /  CHECK-IN TO STAMP  /  TIME RUNS LEFT TO RIGHT</text>
+  <text class="m ttl" x="40" y="108">One check-in, two signatures, one stamp</text>
+
+  <!-- phases -->
+  <path class="ph" d="M330,182 v-12 h480 v12"/>
+  <text class="m eye" x="570" y="160" text-anchor="middle">A  SESSION</text>
+  <path class="ph" d="M860,182 v-12 h330 v12"/>
+  <text class="m eye" x="1025" y="160" text-anchor="middle">B  SERVER CHECK</text>
+  <path class="ph" d="M1210,182 v-12 h260 v12"/>
+  <text class="m eye" x="1340" y="160" text-anchor="middle">C  SIGN</text>
+  <path class="ph" d="M1490,182 v-12 h280 v12"/>
+  <text class="m eye" x="1630" y="160" text-anchor="middle">D  CONTRACT RULES</text>
+
+  <!-- lanes -->
+  <line class="lane" x1="300" y1="260" x2="1770" y2="260"/>
+  <line class="lane" x1="300" y1="470" x2="1770" y2="470"/>
+  <line class="lane" x1="300" y1="650" x2="1770" y2="650"/>
+  <line class="laneOn" x1="300" y1="850" x2="1770" y2="850"/>
+
+  <rect class="card" x="40" y="224" width="250" height="72"/>
+  <text class="m h" x="60" y="254">Traveller phone</text>
+  <text class="m chip" x="60" y="280" fill="#cdbf9c">BROWSER</text>
+  <rect class="card" x="40" y="434" width="250" height="72"/>
+  <text class="m h" x="60" y="464">Presence API</text>
+  <text class="m chip" x="60" y="490" fill="#cdbf9c">OFF-CHAIN</text>
+  <rect class="card" x="40" y="614" width="250" height="72"/>
+  <text class="m h" x="60" y="644">Attestor key</text>
+  <text class="m chip" x="60" y="670" fill="#cdbf9c">SERVER, KMS FROM T1</text>
+  <rect class="cardOn" x="40" y="814" width="250" height="72"/>
+  <text class="m h" x="60" y="844">verapass_stamps</text>
+  <text class="m chip" x="60" y="870" fill="#5fd3a5">SOROBAN</text>
+
+  <!-- 1 nonce request -->
+  <line class="ln" x1="350" y1="262" x2="350" y2="466" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <circle cx="350" cy="230" r="13" fill="#cdbf9c"/><text class="m num" x="350" y="235" text-anchor="middle">1</text>
+  <text class="m lbl" x="364" y="320">POST</text>
+  <text class="m lbl" x="364" y="342">/api/nonce</text>
+  <text class="m b" x="364" y="366">traveller id,</text>
+  <text class="m b" x="364" y="388">place id</text>
+
+  <!-- 2 nonce issued -->
+  <line class="ln" x1="530" y1="468" x2="530" y2="264" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <circle cx="530" cy="230" r="13" fill="#cdbf9c"/><text class="m num" x="530" y="235" text-anchor="middle">2</text>
+  <text class="m lbl" x="544" y="320">nonce</text>
+  <text class="m b" x="544" y="344">single use,</text>
+  <text class="m b" x="544" y="366">2 min, bound to</text>
+  <text class="m b" x="544" y="388">traveller+place</text>
+
+  <!-- 3 check-in -->
+  <line class="ln" x1="710" y1="262" x2="710" y2="466" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <circle cx="710" cy="230" r="13" fill="#cdbf9c"/><text class="m num" x="710" y="235" text-anchor="middle">3</text>
+  <text class="m lbl" x="724" y="320">POST</text>
+  <text class="m lbl" x="724" y="342">/api/checkin</text>
+  <text class="m b" x="724" y="366">lat, lng,</text>
+  <text class="m b" x="724" y="388">accuracy,</text>
+  <text class="m b" x="724" y="410">deviceTs,</text>
+  <text class="m b" x="724" y="432">nonce</text>
+
+  <!-- 4 server checks -->
+  <rect class="card" x="870" y="364" width="320" height="222"/>
+  <circle cx="870" cy="364" r="13" fill="#cdbf9c"/><text class="m num" x="870" y="369" text-anchor="middle">4</text>
+  <text class="m lbl" x="892" y="396">checks, in order</text>
+  <text class="m b" x="892" y="424">clock skew &lt;= 5 min</text>
+  <text class="m b" x="892" y="448">geofence radius</text>
+  <text class="m b" x="892" y="472">accuracy &lt;= 100 m</text>
+  <text class="m b" x="892" y="496">speed &lt;= 250 km/h</text>
+  <text class="m b" x="892" y="520">place + IP limits</text>
+  <text class="m b" x="892" y="544">burn nonce</text>
+  <text class="m lbl" x="892" y="570">-&gt; Ed25519 receipt</text>
+
+  <!-- 5 traveller co-sign (T1) -->
+  <line class="lnS" x1="1240" y1="466" x2="1240" y2="264" marker-start="url(#tipS)" marker-end="url(#tipS)"/>
+  <circle cx="1240" cy="230" r="13" fill="#f0a23b"/><text class="m num" x="1240" y="235" text-anchor="middle">5</text>
+  <text class="m lblS" x="1254" y="300">T1: wallet</text>
+  <text class="m lblS" x="1254" y="322">signs the</text>
+  <text class="m lblS" x="1254" y="344">stamp call;</text>
+  <text class="m b" x="1254" y="370">args include</text>
+  <text class="m b" x="1254" y="392">nonce and</text>
+  <text class="m b" x="1254" y="414">receipt hash</text>
+
+  <!-- 6 stamp tx -->
+  <line class="ln" x1="1420" y1="472" x2="1420" y2="846" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <circle cx="1420" cy="650" r="7" fill="#e8dcc0"/>
+  <circle cx="1420" cy="438" r="13" fill="#cdbf9c"/><text class="m num" x="1420" y="443" text-anchor="middle">6</text>
+  <text class="m lbl" x="1436" y="560">attestor signs</text>
+  <text class="m b" x="1436" y="582">and submits</text>
+  <text class="m lbl" x="1300" y="716" text-anchor="end">stamp(traveller,</text>
+  <text class="m lbl" x="1300" y="738" text-anchor="end">place_id,</text>
+  <text class="m lbl" x="1300" y="760" text-anchor="end">receipt_hash, ts)</text>
+  <text class="m lblS" x="1300" y="786" text-anchor="end">+ nonce arg: T1</text>
+
+  <!-- 7 contract rules -->
+  <rect class="cardOn" x="1480" y="720" width="290" height="246"/>
+  <circle cx="1480" cy="720" r="13" fill="#5fd3a5"/><text class="m num" x="1480" y="725" text-anchor="middle">7</text>
+  <text class="m lbl" x="1500" y="752">rejects unless</text>
+  <text class="m b" x="1500" y="778">attestor signed</text>
+  <text class="m b" x="1500" y="800">ts within 24 h #11</text>
+  <text class="m b" x="1500" y="822">creator active #4</text>
+  <text class="m b" x="1500" y="844">passport live  #8</text>
+  <text class="m b" x="1500" y="866">first stamp   #10</text>
+  <text class="m lbl" x="1500" y="896">then writes</text>
+  <text class="m b" x="1500" y="920">Stamp, visits + 1</text>
+  <text class="m b" x="1500" y="944">emits stamped</text>
+
+  <!-- 8 result -->
+  <line class="ln" x1="1640" y1="718" x2="1640" y2="264" marker-start="url(#dot)" marker-end="url(#tip)"/>
+  <circle cx="1640" cy="230" r="13" fill="#cdbf9c"/><text class="m num" x="1640" y="235" text-anchor="middle">8</text>
+  <text class="m lbl" x="1654" y="320">token id,</text>
+  <text class="m lbl" x="1654" y="342">tx hash,</text>
+  <text class="m b" x="1654" y="366">signed</text>
+  <text class="m b" x="1654" y="388">receipt</text>
+  <text class="m b" x="1654" y="540">via API</text>
+
+  <!-- notes -->
+  <line x1="40" y1="1000" x2="1770" y2="1000" stroke="#24342e" stroke-width="1"/>
+  <text class="m eye" x="40" y="1034">BEFORE STEP 1</text>
+  <text class="m b" x="40" y="1062">Card payment at Stripe Checkout; the signed webhook marks the pass paid.</text>
+  <text class="m b" x="40" y="1086">At the first stamp: activate_passport(traveller, sha256(session id)).</text>
+  <text class="m lblS" x="40" y="1110">T1: issuer key activates at payment; refund or dispute -&gt; deactivate.</text>
+  <text class="m eye" x="920" y="1034">WHAT STEP 4 CANNOT SEE</text>
+  <text class="m b" x="920" y="1062">The fix is reported by the client, so spoofed coordinates</text>
+  <text class="m b" x="920" y="1086">pass step 4. Narrowed by: paid passport per identity,</text>
+  <text class="m b" x="920" y="1110">wallet signature and daily caps (T1), on-site QR (T2).</text>
+
+  <line class="ln" x1="40" y1="1156" x2="100" y2="1156"/>
+  <text class="m b" x="112" y="1162">on testnet today</text>
+  <line class="lnS" x1="330" y1="1156" x2="390" y2="1156"/>
+  <text class="m b" x="402" y="1162">planned, tranche named</text>
+  <text class="m b" x="700" y="1162">#n = contract error code</text>
+</svg>
