@@ -1,0 +1,14 @@
+{
+  "name": "Verapass",
+  "short_name": "Verapass",
+  "description": "A proof-of-presence travel passport on Stellar. Phuket pilot.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B2421",
+  "theme_color": "#0B2421",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
