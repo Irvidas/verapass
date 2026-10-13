@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verapass - real people, real places, proven</title>
+    <meta
+      name="description"
+      content="Verapass is a proof-of-presence travel passport on Stellar. Places from verified local humans, collected only when you are really there. Phuket pilot with Sukanya, a licensed local guide."
+    />
+    <meta name="theme-color" content="#0B2421" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Verapass" />
+    <meta property="og:title" content="Verapass - real people, real places, proven" />
+    <meta
+      property="og:description"
+      content="A travel passport you can only fill by being there. Places picked by verified local humans, every visit signed and recorded on Stellar. Phuket pilot with Sukanya, a licensed guide."
+    />
+    <meta property="og:image" content="%SITE_URL%/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="A VERIFIED HUMAN stamp over a photo of Sukanya on the bow of a boat in the Andaman Sea, next to the words Real people. Real places. Proven." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Verapass - real people, real places, proven" />
+    <meta name="twitter:description" content="A travel passport you can only fill by being there. Phuket pilot with Sukanya, a licensed guide." />
+    <meta name="twitter:image" content="%SITE_URL%/og.jpg" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      type="image/avif"
+      href="/images/r/hero-boat-750.avif"
+      imagesrcset="/images/r/hero-boat-480.avif 480w, /images/r/hero-boat-750.avif 750w"
+      imagesizes="(min-width: 900px) 440px, 92vw"
+      fetchpriority="high"
+    />
+    <script>
+      // The hero intro starts once fonts are in. Until then it waits off stage, unless motion is reduced.
+      // A safety timer shows the page anyway if the app never starts.
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('intro')
+        setTimeout(function () {
+          document.documentElement.classList.remove('intro')
+        }, 3000)
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <main class="noscript">
+        <p><b>Verapass</b> - proof-of-presence travel passport, Phuket pilot</p>
+        <h1>Real people. Real places. Proven.</h1>
+        <p>
+          AI can fake an influencer, a review and a beach that does not exist. It cannot stand on the sand. Verapass shows you
+          places picked by verified local humans, and you can only collect a place when you are really there. Every check-in
+          is signed by the server and its proof hash is recorded on Stellar.
+        </p>
+        <p>
+          The pilot starts with Sukanya, a licensed Tourism Authority of Thailand guide in Phuket. The Phuket pass ($19, one
+          payment by card through Stripe) includes her eBook, every hidden place on the map and your passport.
+        </p>
+        <p>
+          The map, the check-in demo and the passport need JavaScript. Questions:
+          <a href="mailto:sukanyathaiguide@gmail.com">sukanyathaiguide@gmail.com</a>
+        </p>
+      </main>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
